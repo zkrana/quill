@@ -1,5 +1,9 @@
 import Link from 'next/link'
+import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server" 
+
 import MaxWidthWrapper from './MaxWidthWrapper'
+import { buttonVariants } from './ui/button'
+import { ArrowRight } from 'lucide-react'
 
 const Navbar = () => {
   return (
@@ -11,6 +15,33 @@ const Navbar = () => {
             className='flex z-40 font-semibold'>
             <span>quill.</span>
           </Link>
+
+          {/* Mobile Nav */}
+          <div className='hidden items-center space-x-4 sm:flex'>
+            <>
+              <Link href='/pricing'
+              className={buttonVariants({
+                variant: 'ghost',
+                size: 'sm',
+              })}> Pricing </Link>
+              <LoginLink
+              className={buttonVariants({
+                variant: 'ghost',
+                size: 'sm'
+              })}>
+                Sign In
+              </LoginLink>
+              <RegisterLink
+              className={buttonVariants({
+                size: 'sm'
+              })}>
+                Get Started
+                <ArrowRight className='ml-1.5 w-5 h5' />
+              </RegisterLink>
+            </>
+          </div>
+
+
         </div>
       </MaxWidthWrapper>
     </nav>
